@@ -9,12 +9,12 @@ const forecast = (lat, lng, callback) => {
     } else if (body.error) {
       callback(body.error);
     } else {
-      const { temperature, precipProbability } = body.currently;
+      const { temperature, precipProbability, pressure } = body.currently;
       const { summary } = body.daily.data[0];
 
       callback(
         undefined,
-        `${summary} It is currently ${temperature} degrees out. There is a ${precipProbability}% chance of rain.`
+        `${summary} It is currently ${temperature} degrees out. There is a ${precipProbability}% chance of rain. The pressure is ${pressure} Bars.`
       );
     }
   });
